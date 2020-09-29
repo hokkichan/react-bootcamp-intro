@@ -9,33 +9,29 @@
 <body>
   <div id="app"></div>
   
-  <script>
+  <script type='text/babel'> 
   	const name = 'Hokki'
   	const handle = '@hokkichan';
 
-    const nameElement = React.createElement(
-      'h1',
-      null,
-      'Hello World'
-    )
+  	function NameComponent (props) {
+  	  return <h1>{props.name}</h1>
+  	}
 
-    const handleElement = React.createElement(
-      'h3',
-      null,
-      handle
-    	)
+    function HandleComponent (props) {
+      return <h3>{props.handle}</h3>
+    }
 
-    const wrapperElement = React.createElement(
-      'div',
-      { id: 'container'},
-      nameElement,
-      handleElement
-    	)
-    
-console.log('wrapperElement', wrapperElement)
+    function App () {
+      return (
+      <div id='container'>
+        <NameComponent name={name} />
+        <HandleComponent handle={handle} />
+        </div>
+      )
+    }
 
     ReactDOM.render(
-    	wrapperElement,
+    	<App />
     	document.getElementById('app')
     	)
   </script>
